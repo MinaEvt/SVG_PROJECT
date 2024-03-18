@@ -8,50 +8,55 @@
 
 const int ONE = 1;
 
-String::String() : str{nullptr} {
-    str = new char[ONE];
-    str[0] = '\0';
+void String::copy(const String &other) {
+    this->lenght = other.lenght;
+    this->str = new char[this->lenght + ONE];
+    strcpy(this->str, other.str);
+    this->str[this->lenght] = '\0';
 }
 
-String::String(char *val) {
+String::String() : str(nullptr), lenght(0) {
+    this->str = new char[ONE];
+    this->str[0] = '\0';
+}
+
+String::String(const char *val) {
     if (val == nullptr) {
-        str = new char[ONE];
-        str[0] = '\0';
+        this->str = new char[ONE];
+        this->str[0] = '\0';
+        this->lenght = 0;
     } else {
-        str = new char[strlen(val) + ONE];
+        this->lenght = strlen(val);
+        this->str = new char[this->lenght];
         strcpy(str, val);
-        str[strlen(val)] = '\0';
+        this->str[this->lenght] = '\0';
         //std::cout << "The string passed is: " << str << std::endl;
     }
 }
 
 String::String(const String &other) {
-    str = new char[strlen(other.str) + ONE];
-    strcpy(str, other.str);
-    str[strlen(other.str)] = '\0';
+    this->copy(other);
 }
 
 String::String(String &&source) {
-    str = source.str;
+    this->str = source.str;
     source.str = nullptr;
+    source.lenght = 0;
 }
 
-String &String::operator=(const String &rhs) {
-    if (this == &rhs) {
+String &String::operator=(const String &other) {
+    if (this == &other) {
         return *this;
     }
-    delete[] str;
-    str = new char[strlen(rhs.str) + ONE];
-    strcpy(str, rhs.str);
+    delete[] this->str;
+    this->copy(other);
     return *this;
 }
 
 std::istream &operator>>(std::istream &is, String &obj) {
-    char *buff = new char[1000];
-    memset(&buff[0], 0, sizeof(buff));
+    char buff[String::MAX_BUFF];
     is >> buff;
-    obj = String{buff};
-    delete[] buff;
+    obj = String(buff);
     return is;
 }
 
@@ -60,16 +65,17 @@ std::ostream &operator<<(std::ostream &os, const String &obj) {
     return os;
 }
 
-const int String::getSize() const {
-    return strlen(str);
+const int String::getLenght() const {
+    return this->lenght;
 }
 
 void String::setString(const char *text) {
-    if (this->str) {
+    if (this->str)
         delete[] this->str;
-    }
-    this->str = new char[strlen(str) + ONE];
+    this->lenght = strlen(str);
+    this->str = new char[this->lenght + ONE];
     strcpy(this->str, text);
+    this->str[this->lenght] = '\0';
 }
 
 const char *String::getString() const {
@@ -81,25 +87,19 @@ char String::operator[](int index) {
 }
 
 bool String::operator==(const String &other) {
-    if (strlen(this->str) != other.getSize())
-        return false;
-    for (int i = 0; i < strlen(this->str); i++) {
-        if (this->str[i] != other.str[i])
-            return false;
-    }
-    return true;
+    return strcmp(this->str, other.str);
 }
 
 bool String::operator!=(const String &other) {
-    return !(operator==(other));
+    return !(*this == other);
 }
 
-bool String::contain(const String &other) const {
-    if (strlen(this->str) < other.getSize())
+bool String::contains(const String &other) const {
+    if (this->lenght < other.lenght | other.lenght == 0)
         return false;
-    for (int i = 0; i < strlen(this->str); ++i) {
+    for (int i = 0; i < this->lenght; ++i) {
         bool found = true;
-        for (int j = 0; j < other.getSize(); ++j) {
+        for (int j = 0; j < other.lenght; ++j) {
             if (this->str[i+j] != other.str[j]){
                 found = false;
                 break;
@@ -108,5 +108,6 @@ bool String::contain(const String &other) const {
         if(found)
             return true;
     }
+    return false;
 }
 

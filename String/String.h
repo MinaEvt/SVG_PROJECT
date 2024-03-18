@@ -7,22 +7,24 @@
 #include <cstring>
 
 class String {
+    static const unsigned int MAX_BUFF = 1024;
+private:
     char *str;
 
-    friend std::ostream &operator<<(std::ostream &os, const String &obj);
+    unsigned int lenght;
 
-    friend std::istream &operator>>(std::istream &is, String &obj);
+    void copy(const String &other);
 
 public:
     String();
 
-    String(char *val);
+    String(const char *val);
 
     String(const String &other);
 
     String(String &&source);
 
-    const int getSize() const;
+    const int getLenght() const;
 
     String &operator=(const String &rhs);
 
@@ -36,9 +38,13 @@ public:
 
     bool operator!=(const String &other);
 
-    bool contain(const String &other) const;
+    bool contains(const String &other) const;
+
+    friend std::ostream &operator<<(std::ostream &os, const String &obj);
+
+    friend std::istream &operator>>(std::istream &is, String &obj);
 
     ~String() {
-        delete str;
+        delete[] this->str;
     }
 };

@@ -14,10 +14,10 @@ String::String() : str{nullptr} {
 }
 
 String::String(char *val) {
-    if (val == nullptr){
+    if (val == nullptr) {
         str = new char[ONE];
         str[0] = '\0';
-    }else{
+    } else {
         str = new char[strlen(val) + ONE];
         strcpy(str, val);
         str[strlen(val)] = '\0';
@@ -28,7 +28,7 @@ String::String(char *val) {
 String::String(const String &other) {
     str = new char[strlen(other.str) + ONE];
     strcpy(str, other.str);
-    str[strlen(other.str)] =  '\0';
+    str[strlen(other.str)] = '\0';
 }
 
 String::String(String &&source) {
@@ -36,8 +36,8 @@ String::String(String &&source) {
     source.str = nullptr;
 }
 
-String& String::operator=(const String& rhs){
-    if(this == &rhs){
+String &String::operator=(const String &rhs) {
+    if (this == &rhs) {
         return *this;
     }
     delete[] str;
@@ -46,26 +46,26 @@ String& String::operator=(const String& rhs){
     return *this;
 }
 
-std::istream& operator>>(std::istream& is, String& obj){
-char* buff = new char[1000];
+std::istream &operator>>(std::istream &is, String &obj) {
+    char *buff = new char[1000];
     memset(&buff[0], 0, sizeof(buff));
     is >> buff;
-    obj = String{ buff };
+    obj = String{buff};
     delete[] buff;
     return is;
 }
 
-std::ostream& operator<<( std::ostream& os,const String& obj){
+std::ostream &operator<<(std::ostream &os, const String &obj) {
     os << obj.str;
     return os;
 }
 
-const int String::getSize() const{
+const int String::getSize() const {
     return strlen(str);
 }
 
 void String::setString(const char *text) {
-    if (this->str){
+    if (this->str) {
         delete[] this->str;
     }
     this->str = new char[strlen(str) + ONE];
@@ -81,10 +81,10 @@ char String::operator[](int index) {
 }
 
 bool String::operator==(const String &other) {
-    if(strlen(this->str) != other.getSize())
+    if (strlen(this->str) != other.getSize())
         return false;
-    for(int i = 0; i < strlen(this->str); i++){
-        if(this->str[i] != other.str[i])
+    for (int i = 0; i < strlen(this->str); i++) {
+        if (this->str[i] != other.str[i])
             return false;
     }
     return true;
@@ -95,6 +95,18 @@ bool String::operator!=(const String &other) {
 }
 
 bool String::contain(const String &other) const {
-
+    if (strlen(this->str) < other.getSize())
+        return false;
+    for (int i = 0; i < strlen(this->str); ++i) {
+        bool found = true;
+        for (int j = 0; j < other.getSize(); ++j) {
+            if (this->str[i+j] != other.str[j]){
+                found = false;
+                break;
+            }
+        }
+        if(found)
+            return true;
+    }
 }
 

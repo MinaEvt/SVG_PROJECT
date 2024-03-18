@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SVG_PROJECT.dir/main.cpp.o -o SVG_PROJECT 

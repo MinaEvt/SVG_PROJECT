@@ -1,0 +1,3 @@
+/mnt/c/Users/Mina/Desktop/UNI/SVG_PROJECT/cmake-build-debug/CMakeFiles/SVG_PROJECT.dir
+/mnt/c/Users/Mina/Desktop/UNI/SVG_PROJECT/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Mina/Desktop/UNI/SVG_PROJECT/cmake-build-debug/CMakeFiles/rebuild_cache.dir

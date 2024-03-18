@@ -39,7 +39,7 @@ String::String(const String &other) {
 }
 
 String::String(String &&source) {
-    this->str = source.str;
+    this->copy(source);
     source.str = nullptr;
     source.length = 0;
 }

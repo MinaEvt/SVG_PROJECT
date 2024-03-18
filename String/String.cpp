@@ -87,7 +87,7 @@ char String::operator[](int index) {
 }
 
 bool String::operator==(const String &other) {
-    return strcmp(this->str, other.str);
+    return strcmp(this->str, other.str) == 0;
 }
 
 bool String::operator!=(const String &other) {

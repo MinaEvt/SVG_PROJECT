@@ -11,7 +11,7 @@ class String {
 private:
     char *str;
 
-    unsigned int lenght;
+    unsigned int length;
 
     void copy(const String &other);
 
@@ -24,7 +24,7 @@ public:
 
     String(String &&source);
 
-    const int getLenght() const;
+    const int getLength() const;
 
     String &operator=(const String &rhs);
 

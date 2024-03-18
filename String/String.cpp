@@ -9,13 +9,13 @@
 const int ONE = 1;
 
 void String::copy(const String &other) {
-    this->lenght = other.lenght;
-    this->str = new char[this->lenght + ONE];
+    this->length = other.length;
+    this->str = new char[this->length + ONE];
     strcpy(this->str, other.str);
-    this->str[this->lenght] = '\0';
+    this->str[this->length] = '\0';
 }
 
-String::String() : str(nullptr), lenght(0) {
+String::String() : str(nullptr), length(0) {
     this->str = new char[ONE];
     this->str[0] = '\0';
 }
@@ -24,12 +24,12 @@ String::String(const char *val) {
     if (val == nullptr) {
         this->str = new char[ONE];
         this->str[0] = '\0';
-        this->lenght = 0;
+        this->length = 0;
     } else {
-        this->lenght = strlen(val);
-        this->str = new char[this->lenght];
+        this->length = strlen(val);
+        this->str = new char[this->length];
         strcpy(str, val);
-        this->str[this->lenght] = '\0';
+        this->str[this->length] = '\0';
         //std::cout << "The string passed is: " << str << std::endl;
     }
 }
@@ -41,7 +41,7 @@ String::String(const String &other) {
 String::String(String &&source) {
     this->str = source.str;
     source.str = nullptr;
-    source.lenght = 0;
+    source.length = 0;
 }
 
 String &String::operator=(const String &other) {
@@ -65,17 +65,17 @@ std::ostream &operator<<(std::ostream &os, const String &obj) {
     return os;
 }
 
-const int String::getLenght() const {
-    return this->lenght;
+const int String::getLength() const {
+    return this->length;
 }
 
 void String::setString(const char *text) {
     if (this->str)
         delete[] this->str;
-    this->lenght = strlen(str);
-    this->str = new char[this->lenght + ONE];
+    this->length = strlen(str);
+    this->str = new char[this->length + ONE];
     strcpy(this->str, text);
-    this->str[this->lenght] = '\0';
+    this->str[this->length] = '\0';
 }
 
 const char *String::getString() const {
@@ -95,17 +95,17 @@ bool String::operator!=(const String &other) {
 }
 
 bool String::contains(const String &other) const {
-    if (this->lenght < other.lenght | other.lenght == 0)
+    if (this->length < other.length || other.length == 0)
         return false;
-    for (int i = 0; i < this->lenght; ++i) {
+    for (int i = 0; i < this->length; ++i) {
         bool found = true;
-        for (int j = 0; j < other.lenght; ++j) {
-            if (this->str[i+j] != other.str[j]){
+        for (int j = 0; j < other.length; ++j) {
+            if (this->str[i + j] != other.str[j]) {
                 found = false;
                 break;
             }
         }
-        if(found)
+        if (found)
             return true;
     }
     return false;

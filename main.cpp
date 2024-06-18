@@ -1,5 +1,6 @@
 //#include "Shapes/Rectangle.cpp"
-#include "Shapes/Line.cpp"
+//#include "Shapes/Line.cpp"
+#include "Shapes/Circle.cpp"
 
 int main() {
     //string
@@ -30,5 +31,14 @@ int main() {
 //    std::cout << "Scaled line: ";
 //    l.write(std::cout);
 
+//circle
+Circle c;
+c.write(std::cout);
+c.translate(10, 10);
+std::cout << "Translated sircle: ";
+c.write(std::cout);
+c.scale(100,100);
+std::cout << "Scaled sircle: ";
+c.write(std::cout);
     return 0;
 }

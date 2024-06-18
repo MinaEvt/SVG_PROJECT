@@ -6,14 +6,15 @@
 #define SVG_POINTS_H
 
 #include <cmath>
-struct Point{
+
+struct Point {
     int x;
     int y;
 
-    Point() : x(0), y(0){};
-    Point(int x, int y) : x(x), y(y){};
-};
+    Point() : x(0), y(0) {};
 
+    Point(int x, int y) : x(x), y(y) {};
+};
 
 
 #endif //SVG_POINTS_H

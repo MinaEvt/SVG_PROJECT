@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.27)
-project(OOP_2024)
+cmake_minimum_required(VERSION 3.10)
+project(SVG)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
-#add_executable(SVG main.cpp)
-add_executable(OOP_2024 ../SVG_PROJECT/String/main.cpp
-        Shapes/Shape.h)
+include_directories(${CMAKE_SOURCE_DIR})
+
+add_executable(SVG main.cpp Shapes/Rectangle.cpp Helpers/String.cpp)

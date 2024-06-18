@@ -24,6 +24,8 @@ public:
 
     void write(std::ostream &out) override;
 
+    bool isCorrectShape() override;
+
     //default constructor
     Rectangle();
 
@@ -36,7 +38,6 @@ public:
     // Assignment operator
     Rectangle &operator=(const Rectangle &other);
 
-    bool isCorrectRectangle();
 
     ~Rectangle() override = default;
 

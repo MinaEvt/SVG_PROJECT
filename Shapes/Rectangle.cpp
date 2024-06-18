@@ -24,7 +24,7 @@ void Rectangle::scale(const int width, const int length) {
     this->width *= width;
 }
 
-bool Rectangle::isCorrectRectangle() {
+bool Rectangle::isCorrectShape() {
     if (this->fill.isNumber())
         return false;
     if (this->line.isNumber())
@@ -46,7 +46,7 @@ void Rectangle::create(std::istream &in) {
     in >> this->line;
     std::cout << "Enter fill: ";
     in >> this->fill;
-    if (!isCorrectRectangle()) {
+    if (!isCorrectShape()) {
         std::cout << "Error! Enter correct rectangle!" << std::endl;
     }
 }

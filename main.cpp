@@ -1,4 +1,5 @@
-#include "Shapes/Rectangle.cpp"
+//#include "Shapes/Rectangle.cpp"
+#include "Shapes/Line.cpp"
 
 int main() {
     //string
@@ -18,5 +19,16 @@ int main() {
 //    rect.scale(100, 100);
 //    std::cout << "rect after scale: ";
 //    rect.write(std::cout);
+
+//line
+//    Line l;
+//    l.write(std::cout);
+//    l.translate(10, 10);
+//    std::cout << "Traslated line: ";
+//    l.write(std::cout);
+//    l.scale(100, 100);
+//    std::cout << "Scaled line: ";
+//    l.write(std::cout);
+
     return 0;
 }

@@ -6,12 +6,12 @@
 
 void Rectangle::print(std::ostream &out) {
     out << "Rectangle: "
-    << "width: " << this->width << ' '
-    << "height: " << this->height << ' '
-    << "x: " << this->x << ' '
-    << "y: " << this->y << ' '
-    << "line: " << this->line << ' '
-    << "fill: " << this->fill << std::endl;
+        << "width: " << this->width << ' '
+        << "height: " << this->height << ' '
+        << "x: " << this->x << ' '
+        << "y: " << this->y << ' '
+        << "line: " << this->line << ' '
+        << "fill: " << this->fill << std::endl;
 }
 
 void Rectangle::translate(const int vertical, const int horizontal) {
@@ -22,6 +22,45 @@ void Rectangle::translate(const int vertical, const int horizontal) {
 void Rectangle::scale(const int width, const int length) {
     this->height *= length;
     this->width *= width;
+}
+
+bool Rectangle::isCorrectRectangle() {
+    if (this->fill.isNumber())
+        return false;
+    if (this->line.isNumber())
+        return false;
+    return true;
+}
+
+void Rectangle::create(std::istream &in) {
+    std::cout << "Enter rectangle ->";
+    std::cout << "Enter width: ";
+    in >> this->width;
+    std::cout << "Enter height: ";
+    in >> this->height;
+    std::cout << "Enter x: ";
+    in >> this->x;
+    std::cout << "Enter y: ";
+    in >> this->y;
+    std::cout << "Enter line: ";
+    in >> this->line;
+    std::cout << "Enter fill: ";
+    in >> this->fill;
+    if (!isCorrectRectangle()) {
+        std::cout << "Error! Enter correct rectangle!" << std::endl;
+    }
+}
+
+void Rectangle::write(std::ostream &out) {
+    out << "<rect "
+        << "x=\"" << this->x << "\" "
+        << "y=\"" << this->y << "\" "
+        << "width=\"" << this->width << "\" "
+        << "height=\"" << this->height << "\" "
+        << "line=\"" << this->line << "\" "
+        << "fill=\"" << this->fill << "\" "
+        << "/>"
+        << std::endl;
 }
 
 Rectangle::Rectangle()
@@ -42,7 +81,7 @@ Rectangle &Rectangle::operator=(const Rectangle &other) {
     return *this;
 }
 
-Rectangle::Rectangle(int width, int height, int x, int y, String line, String fill)
+Rectangle::Rectangle(int width, int height, int x, int y, const String &line, const String &fill)
         : width(width), height(height), x(x), y(y), line(line), fill(fill) {}
 
 

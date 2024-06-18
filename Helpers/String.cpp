@@ -7,7 +7,7 @@
 #include "String.h"
 
 String::String() : text(nullptr), size(0) {
-    this->text =  new char[1];
+    this->text = new char[1];
     this->text[0] = '\0';
 }
 
@@ -153,6 +153,15 @@ String String::strip(const String &other) const {
     String newString(helperStr);
     delete[] helperStr;
     return newString;
+}
+
+bool String::isNumber() {
+    for (int i = 0; i < this->size; ++i) {
+        char c = this->text[i];
+        if (c >= '0' && c <= '9')
+            return true;
+    }
+    return false;
 }
 
 //void Helpers::print() const {

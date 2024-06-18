@@ -56,6 +56,8 @@ public:
     //strips a given string by another and returns the stripped one
     String strip(const String &other) const;
 
+    bool isNumber();
+
     //method to print the string
     //void print() const;
 

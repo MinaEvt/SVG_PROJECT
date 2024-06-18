@@ -13,6 +13,10 @@ public:
 
     virtual void scale(const int width, const int length) = 0;
 
+    virtual void create(std::istream &in) = 0;
+
+    virtual void write(std::ostream &out) = 0;
+
     virtual ~Shape() = default;
 };
 

@@ -66,9 +66,12 @@ Circle::Circle(const Circle &other)  : cx(other.cx), cy(other.cy), r(other.r),li
 Circle::Circle(int cx, int cy, int r,const String &line, const String &fill)  : cx(cx), cy(cy), r(r), line(line),fill(fill){}
 
 Circle &Circle::operator=(const Circle &other) {
-    this->cx = other.cx;
-    this->cy = other.cy;
-    this->r = other.r;
-    this->line = other.line;
-    this->fill = other.fill;
+    if(this != &other){
+        this->cx = other.cx;
+        this->cy = other.cy;
+        this->r = other.r;
+        this->line = other.line;
+        this->fill = other.fill;
+    }
+    return *this;
 }

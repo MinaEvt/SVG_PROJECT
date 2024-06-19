@@ -6,48 +6,50 @@
 #include <cstring>
 #include "String.h"
 
-String::String() : text(nullptr), size(0) {
+inline String::String() : text(nullptr), size(0) {
     this->text = new char[1];
     this->text[0] = '\0';
 }
 
-String::String(const char *text) {
+inline String::String(const char *text) {
     this->size = std::strlen(text);
     this->text = new char[this->size + 1];
     std::strcpy(this->text, text);
 }
 
-String::String(const String &other) {
+inline String::String(const String &other) {
     this->size = other.size;
     this->text = new char[this->size + 1];
     std::strcpy(this->text, other.text);
 }
 
-void String::setText(const char *_text) {
-    if (this->text)
-        delete[] this->text;
+inline void String::setText(const char *_text) {
+    delete[] this->text;
     this->size = std::strlen(_text);
     this->text = new char[this->size + 1];
     std::strcpy(this->text, _text);
 
 }
 
-const unsigned int String::getSize() const {
+inline unsigned int String::getSize() const {
     return this->size;
 }
 
-const char *String::getText() const {
+inline const char *String::getText() const {
     return this->text;
 }
 
-String &String::operator=(const String &other) {
+inline String &String::operator=(const String &other) {
     if (this != &other) {
-        this->setText(other.getText());
+        delete[] this->text;
+        this->size = other.size;
+        this->text = new char[this->size + 1];
+        std::strcpy(this->text, other.text);
     }
     return *this;
 }
 
-String &String::operator=(const char *other) {
+inline String &String::operator=(const char *other) {
     if (this->text == other)
         return *this;
 
@@ -65,46 +67,40 @@ String &String::operator=(const char *other) {
     return *this;
 }
 
-String String::operator+(const String &other) {
+inline String String::operator+(const String &other) const{
     unsigned int new_size = this->size + other.getSize();
     char *new_text = new char[new_size + 1];
     std::strcpy(new_text, this->text);
-    std::strcpy(new_text + other.getSize(), other.getText());
-    String new_string = new_text;
+    std::strcat(new_text, other.text);
+    String new_string(new_text);
     delete[] new_text;
     return new_string;
 }
 
-char String::operator[](int index) {
-    if (!this->text)
-        return ' ';
-    for (int i = 0; i < this->size; ++i) {
-        if (i == index) {
-            return this->text[i];
-        }
+inline char String::operator[](int index) const{
+    if (index >= 0 && index < static_cast<int>(this->size)) {
+        return this->text[index];
     }
-    return ' ';
+    return '\0';
 }
 
-bool String::operator==(const String &other) {
-    if (this->text == other.getText())
-        return true;
-    return false;
+inline bool String::operator==(const String &other) const{
+    return std::strcmp(this->text, other.text) == 0;
 }
 
-std::istream &operator>>(std::istream &in, String &string) {
+inline std::istream &operator>>(std::istream &in, String &string) {
     char input[MAX_BUFFER];
     in.getline(input, MAX_BUFFER - 1);
-    string = (String) input;
+    string = input;
     return in;
 }
 
-std::ostream &operator<<(std::ostream &out, String &string) {
+inline std::ostream &operator<<(std::ostream &out,const String &string) {
     out << string.getText();
     return out;
 }
 
-bool String::contains(const String &other) const {
+inline bool String::contains(const String &other) const {
     if (other.size > this->size)
         return false;
     if (this->text != nullptr & other.text != nullptr) {
@@ -127,7 +123,7 @@ bool String::contains(const String &other) const {
     return false;
 }
 
-String String::strip(const String &other) const {
+inline String String::strip(const String &other) const {
     if (!this->text || !other.text)
         return *this;
     if (other.size == 0)
@@ -155,7 +151,7 @@ String String::strip(const String &other) const {
     return newString;
 }
 
-bool String::isNumber() {
+inline bool String::isNumber() {
     for (int i = 0; i < this->size; ++i) {
         char c = this->text[i];
         if (c >= '0' && c <= '9')

@@ -15,54 +15,42 @@ private:
 public:
     //default constructor
     String();
-
     //Constructor with 1 argument
-    String(const char *text);
-
+    explicit String(const char *text);
     //Copy constructor
     String(const String &other);
 
     //Setter
     void setText(const char *text);
-
     //Getters
-    const unsigned int getSize() const;
-
+    unsigned int getSize() const;
     const char *getText() const;
 
-    //operator for assigment
+    //Assignment operators
     String &operator=(const String &other);
-
-    //operator = with char*
     String &operator=(const char *other);
-
     //operator for string concatenation
-    String operator+(const String &other);
-
+    String operator+(const String &other) const;
     //operator for returning a char standing on a given index
-    char operator[](int index);
-
+    char operator[](int index) const;
     //Operator for comparison between two strings
-    bool operator==(const String &other);
+    bool operator==(const String &other) const;
 
-    //operator for input and output
+    //Input and output operators
     friend std::istream &operator>>(std::istream &in, String &string);
-
-    friend std::ostream &operator<<(std::ostream &out, String &string);
+    friend std::ostream &operator<<(std::ostream &out, const String &string);
 
     //check if a string is contained inside another string
     bool contains(const String &other) const;
-
     //strips a given string by another and returns the stripped one
     String strip(const String &other) const;
-
     bool isNumber();
 
     //method to print the string
     //void print() const;
 
     //Destructor
-    ~String() {
+    inline  ~String() {
         delete[] this->text;
     }
 

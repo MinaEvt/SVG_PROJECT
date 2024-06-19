@@ -1,9 +1,11 @@
-#ifndef OOP_2024_RECTANGLE_H
-#define OOP_2024_RECTANGLE_H
+#ifndef SVG_RECTANGLE_H
+#define SVG_RECTANGLE_H
+
+//#pragma once
 
 #include "Shape.h"
 #include "../Helpers/Points.h"
-#include "../Helpers/String.cpp"
+//#include "../Helpers/String.cpp"
 
 class Rectangle : public Shape {
 private:
@@ -44,4 +46,4 @@ public:
 };
 
 
-#endif //OOP_2024_RECTANGLE_H
+#endif //SVG_RECTANGLE_H

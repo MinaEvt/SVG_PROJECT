@@ -3,27 +3,28 @@
 //
 
 
+#include <iostream>
 #include <cstring>
 #include "String.h"
 
-inline String::String() : text(nullptr), size(0) {
+ String::String() : text(nullptr), size(0) {
     this->text = new char[1];
     this->text[0] = '\0';
 }
 
-inline String::String(const char *text) {
+ String::String(const char *text) {
     this->size = std::strlen(text);
     this->text = new char[this->size + 1];
     std::strcpy(this->text, text);
 }
 
-inline String::String(const String &other) {
+ String::String(const String &other) {
     this->size = other.size;
     this->text = new char[this->size + 1];
     std::strcpy(this->text, other.text);
 }
 
-inline void String::setText(const char *_text) {
+ void String::setText(const char *_text) {
     delete[] this->text;
     this->size = std::strlen(_text);
     this->text = new char[this->size + 1];
@@ -31,15 +32,15 @@ inline void String::setText(const char *_text) {
 
 }
 
-inline unsigned int String::getSize() const {
+ unsigned int String::getSize() const {
     return this->size;
 }
 
-inline const char *String::getText() const {
+ const char *String::getText() const {
     return this->text;
 }
 
-inline String &String::operator=(const String &other) {
+ String &String::operator=(const String &other) {
     if (this != &other) {
         delete[] this->text;
         this->size = other.size;
@@ -49,7 +50,7 @@ inline String &String::operator=(const String &other) {
     return *this;
 }
 
-inline String &String::operator=(const char *other) {
+ String &String::operator=(const char *other) {
     if (this->text == other)
         return *this;
 
@@ -67,7 +68,7 @@ inline String &String::operator=(const char *other) {
     return *this;
 }
 
-inline String String::operator+(const String &other) const{
+ String String::operator+(const String &other) const{
     unsigned int new_size = this->size + other.getSize();
     char *new_text = new char[new_size + 1];
     std::strcpy(new_text, this->text);
@@ -77,30 +78,30 @@ inline String String::operator+(const String &other) const{
     return new_string;
 }
 
-inline char String::operator[](int index) const{
+ char String::operator[](int index) const{
     if (index >= 0 && index < static_cast<int>(this->size)) {
         return this->text[index];
     }
     return '\0';
 }
 
-inline bool String::operator==(const String &other) const{
+ bool String::operator==(const String &other) const{
     return std::strcmp(this->text, other.text) == 0;
 }
 
-inline std::istream &operator>>(std::istream &in, String &string) {
+ std::istream &operator>>(std::istream &in, String &string) {
     char input[MAX_BUFFER];
     in.getline(input, MAX_BUFFER - 1);
     string = input;
     return in;
 }
 
-inline std::ostream &operator<<(std::ostream &out,const String &string) {
+ std::ostream &operator<<(std::ostream &out,const String &string) {
     out << string.getText();
     return out;
 }
 
-inline bool String::contains(const String &other) const {
+ bool String::contains(const String &other) const {
     if (other.size > this->size)
         return false;
     if (this->text != nullptr & other.text != nullptr) {
@@ -123,7 +124,7 @@ inline bool String::contains(const String &other) const {
     return false;
 }
 
-inline String String::strip(const String &other) const {
+ String String::strip(const String &other) const {
     if (!this->text || !other.text)
         return *this;
     if (other.size == 0)
@@ -151,7 +152,7 @@ inline String String::strip(const String &other) const {
     return newString;
 }
 
-inline bool String::isNumber() {
+ bool String::isNumber() {
     for (int i = 0; i < this->size; ++i) {
         char c = this->text[i];
         if (c >= '0' && c <= '9')

@@ -5,8 +5,9 @@
 #ifndef SVG_CIRCLE_H
 #define SVG_CIRCLE_H
 
+//#pragma once
 #include "Shape.h"
-#include "../Helpers/String.cpp"
+//#include "../Helpers/String.cpp"
 
 class Circle : public Shape{
 private:

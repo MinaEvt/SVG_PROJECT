@@ -5,8 +5,10 @@
 #ifndef SVG_LINE_H
 #define SVG_LINE_H
 
+//#pragma once
+
 #include "Shape.h"
-#include "../Helpers/String.cpp"
+//#include "../Helpers/String.cpp"
 
 class Line : public Shape {
 private:

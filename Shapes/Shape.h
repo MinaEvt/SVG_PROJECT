@@ -1,10 +1,13 @@
 //
 // Created by Mina on 16.6.2024 г..
 //
-#ifndef OOP_2024_SHAPE_H
-#define OOP_2024_SHAPE_H
+#ifndef SVG_SHAPE_H
+#define SVG_SHAPE_H
+//#pragma once
 
 #include <iostream>
+#include "../Helpers/String.h"
+
 class Shape {
 public:
     virtual void print(std::ostream &out) = 0;
@@ -23,4 +26,4 @@ public:
 };
 
 
-#endif //OOP_2024_SHAPE_H
+#endif //SVG_SHAPE_H

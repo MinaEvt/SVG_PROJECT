@@ -5,8 +5,10 @@
 #ifndef SVG_POLYGON_H
 #define SVG_POLYGON_H
 
+//#pragma once
+
 #include "Shape.h"
-#include "../Helpers/String.cpp"
+//#include "../Helpers/String.cpp"
 #include "../Helpers/Points.h"
 
 class Polygon : public Shape {

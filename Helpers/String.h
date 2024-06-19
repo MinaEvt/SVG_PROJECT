@@ -1,10 +1,7 @@
 
-#ifndef OOP_2024_STRING_H
-#define OOP_2024_STRING_H
-
-
-#include <iostream>
-#include <cstring>
+//#ifndef SVG_STRING_H
+//#define SVG_STRING_H
+#pragma once
 
 const int MAX_BUFFER = 4096;
 
@@ -58,4 +55,4 @@ public:
 };
 
 
-#endif //OOP_2024_STRING_H
+//#endif // SVG_STRING_H

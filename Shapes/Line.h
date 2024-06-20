@@ -5,18 +5,10 @@
 #ifndef SVG_LINE_H
 #define SVG_LINE_H
 
-//#pragma once
-
 #include "Shape.h"
-//#include "../Helpers/String.cpp"
+
 
 class Line : public Shape {
-private:
-    int x1;
-    int y1;
-    int x2;
-    int y2;
-    String line;
 public:
     void print(std::ostream &out) override;
 
@@ -39,6 +31,13 @@ public:
     Line &operator=(const Line &other);
 
     ~Line() override = default;
+private:
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    String line;
+
 };
 
 

@@ -3,7 +3,6 @@
 //
 #ifndef SVG_SHAPE_H
 #define SVG_SHAPE_H
-//#pragma once
 
 #include <iostream>
 #include "../Helpers/String.h"

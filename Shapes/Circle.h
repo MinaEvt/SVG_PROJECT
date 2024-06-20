@@ -5,17 +5,9 @@
 #ifndef SVG_CIRCLE_H
 #define SVG_CIRCLE_H
 
-//#pragma once
 #include "Shape.h"
-//#include "../Helpers/String.cpp"
 
 class Circle : public Shape{
-private:
-    int cx;
-    int cy;
-    int r;
-    String line;
-    String fill;
 public:
      void print(std::ostream &out)override;
 
@@ -38,6 +30,13 @@ public:
      Circle(const Circle &other);
 
      Circle &operator=(const Circle &other);
+private:
+    int cx;
+    int cy;
+    int r;
+    String line;
+    String fill;
+
 
 };
 

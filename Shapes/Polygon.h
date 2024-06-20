@@ -5,18 +5,11 @@
 #ifndef SVG_POLYGON_H
 #define SVG_POLYGON_H
 
-//#pragma once
 
 #include "Shape.h"
-//#include "../Helpers/String.cpp"
 #include "../Helpers/Points.h"
 
 class Polygon : public Shape {
-private:
-    Point *points;
-    int pointsNumber;
-    String line;
-    String fill;
 public:
     void print(std::ostream &out) override;
 
@@ -41,6 +34,12 @@ public:
     Polygon(const Polygon &other);
 
     Polygon &operator=(const Polygon &other);
+private:
+    Point *points;
+    int pointsNumber;
+    String line;
+    String fill;
+
 };
 
 

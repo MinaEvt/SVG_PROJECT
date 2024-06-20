@@ -1,3 +1,13 @@
 /cmake-build-debug
 /.idea
 /build
+/Points.o
+/Circle.o
+/String.o
+/Container.o
+/Line.o
+/Poligon.o
+/Rectangle.o
+/Shape.o
+/.sconsign.dblite
+/main.o

@@ -1,8 +1,10 @@
-//#include "Shapes/Rectangle.cpp"
-//#include "Shapes/Line.cpp"
-#include "Shapes/Circle.cpp"
-#include "Shapes/Polygon.cpp"
+#include "Shapes/Container.h"
 
 int main() {
+
+    Container c;
+    //c.createFromConsole();
+    //c.print();
+
     return 0;
 }

@@ -3,8 +3,7 @@
 //
 
 
-#include <iostream>
-#include <cstring>
+
 #include "String.h"
 
  String::String() : text(nullptr), size(0) {

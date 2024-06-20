@@ -5,16 +5,8 @@
 
 #include "Shape.h"
 #include "../Helpers/Points.h"
-//#include "../Helpers/String.cpp"
 
 class Rectangle : public Shape {
-private:
-    int width;
-    int height;
-    int x;
-    int y;
-    String line;
-    String fill;
 public:
     void print(std::ostream &out) override;
 
@@ -42,6 +34,14 @@ public:
 
 
     ~Rectangle() override = default;
+private:
+    int width;
+    int height;
+    int x;
+    int y;
+    String line;
+    String fill;
+
 
 };
 

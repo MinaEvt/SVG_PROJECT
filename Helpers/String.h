@@ -1,14 +1,13 @@
 
-//#ifndef SVG_STRING_H
-//#define SVG_STRING_H
-#pragma once
+#ifndef SVG_STRING_H
+#define SVG_STRING_H
+
+#include <iostream>
+#include <cstring>
 
 const int MAX_BUFFER = 4096;
 
 class String {
-private:
-    char *text;
-    unsigned int size;
 public:
     //default constructor
     String();
@@ -50,9 +49,11 @@ public:
     inline  ~String() {
         delete[] this->text;
     }
-
+private:
+    char *text;
+    unsigned int size;
 
 };
 
 
-//#endif // SVG_STRING_H
+#endif // SVG_STRING_H

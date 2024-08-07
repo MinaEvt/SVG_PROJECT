@@ -44,7 +44,7 @@ void Polygon::print(std::ostream &out) {
         out << "Point " << i + 1 << ": (" << this->points->x << ", " << this->points->y << " ) ";
     }
     out << "line: " << this->line
-        << "fill: " << this->fill
+        << " fill: " << this->fill
         << std::endl;
 }
 

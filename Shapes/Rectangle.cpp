@@ -7,11 +7,11 @@
 void Rectangle::print(std::ostream &out) {
     out << "Rectangle: "
         << "width: " << this->width << ' '
-        << "height: " << this->height << ' '
-        << "x: " << this->x << ' '
-        << "y: " << this->y << ' '
-        << "line: " << this->line << ' '
-        << "fill: " << this->fill << std::endl;
+        << " height: " << this->height << ' '
+        << " x: " << this->x << ' '
+        << " y: " << this->y << ' '
+        << " line: " << this->line << ' '
+        << " fill: " << this->fill << std::endl;
 }
 
 void Rectangle::translate(const int vertical, const int horizontal) {

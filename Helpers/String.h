@@ -19,7 +19,7 @@ public:
     //Setter
     void setText(const char *text);
     //Getters
-    unsigned int getSize() const;
+    const int getSize() const;
     const char *getText() const;
 
     //Assignment operators

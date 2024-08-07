@@ -31,7 +31,7 @@
 
 }
 
- unsigned int String::getSize() const {
+const int String::getSize() const {
     return this->size;
 }
 
@@ -139,7 +139,7 @@
 
     for (int i = 0; i < this->size;) {
         int j = 0;
-        if (i <= this->size - other.size && std::strncmp(this->text + i, other.text, other.size)) {
+        if (i <= this->size - other.size && std::strncmp(this->text + i, other.text, other.size) == 0) {
             i += other.size;
         } else {
             helperStr[index++] = this->text[i++];
@@ -160,7 +160,7 @@
     return false;
 }
 
-//void Helpers::print() const {
+//void String::print() const {
 //    if (this->text){
 //        std::cout << this->text << std::endl;
 //    }else{

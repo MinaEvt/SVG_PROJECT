@@ -7,10 +7,10 @@
 void Line::print(std::ostream &out) {
     out << "The line is: "
         << "x1 = " << this->x1
-        << "y1 = " << this->y1
-        << "x2 = " << this->x2
-        << "y2 = " << this->y2
-        << "line color = " << this->line << std::endl;
+        << " y1 = " << this->y1
+        << " x2 = " << this->x2
+        << " y2 = " << this->y2
+        << " linecolor = " << this->line << std::endl;
 }
 
 void Line::translate(const int vertical, const int horizontal) {
@@ -52,8 +52,10 @@ void Line::create(std::istream &in) {
     in >> this->x2;
     std::cout << "Enter y2: ";
     in >> this->y2;
-    std::cout << "Enter line: ";
-    in >> this->line;
+    std::cout << "Enter linecolor: ";
+    //std::getline(in, this->line);
+    std::cin >> std::ws;
+    in >> this->line;//jumps over
     if (!isCorrectShape()) {
         std::cout << "Error! Enter correct line!" << std::endl;
     }

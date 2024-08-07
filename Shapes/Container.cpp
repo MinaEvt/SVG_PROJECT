@@ -6,7 +6,7 @@
 
 void Container::clean() {
     for (int i = 0; i < this->size; ++i) {
-        delete this->shape[i];
+        delete this->shape[i];//Signal: SIGSEGV (Segmentation fault)
     }
     delete[] this->shape;
     shape = nullptr;
@@ -22,7 +22,7 @@ void Container::resize() {
         newCap = this->cap * 2;
     }
 
-    Shape **newShape = new Shape *[newCap];
+    auto **newShape = new Shape *[newCap];
     for (int i = 0; i < this->size; ++i) {
         newShape[i] = this->shape[i];
     }
@@ -81,8 +81,9 @@ unsigned int Container::getSize() const {
 void Container::print() const {
     std::cout << "The container: " << std::endl;
     for (int i = 0; i < this->size; ++i) {
-        //std::cout << "index " << i << ": " << this->shape[i] << std::endl;
-        this->shape[i]->print(std::cout);
+        std::cout << "index " << i << ": " << this->shape[i] << std::endl;
+        this->shape[i]->print(std::cout);//(1)The container:
+                                            //index 0: 0x55a1f6ab0730
     }
 }
 
@@ -98,48 +99,48 @@ void Container::write(std::ostream &out) const {
 }
 
 void Container::createFromConsole() {
-    std::cout << "Enter shape: ";
+    //std::cout << "Enter shape: ";
     String shapeType;
     std::cin >> shapeType;
-    Shape *shape;
+    Shape *_shape;
     if (shapeType == (String) "Rectangle" || shapeType == (String) "rectangle") {
-        shape = new Rectangle;
-        shape->create(std::cin);
-        this->add(shape);
+        _shape = new Rectangle;
+        _shape->create(std::cin);
+        this->add(_shape);
         std::cout << "Added: ";
-        shape->print(std::cout);
+        _shape->print(std::cout);
         std::cout << "(" << this->size << ")";
-        delete shape;
+        delete _shape;
         return;
     }
     if (shapeType == (String) "Line" || shapeType == (String) "line") {
-        shape = new Line;
-        shape->create(std::cin);
-        this->add(shape);
+        _shape = new Line;
+        _shape->create(std::cin);
+        this->add(_shape);
         std::cout << "Added: ";
-        shape->print(std::cout);
+        _shape->print(std::cout);
         std::cout << "(" << this->size << ")";
-        delete shape;
+        delete _shape;
         return;
     }
     if (shapeType == (String) "Circle" || shapeType == (String) "circle") {
-        shape = new Circle;
-        shape->create(std::cin);
-        this->add(shape);
+        _shape = new Circle;
+        _shape->create(std::cin);
+        this->add(_shape);
         std::cout << "Added: ";
-        shape->print(std::cout);
+        _shape->print(std::cout);
         std::cout << "(" << this->size << ")";
-        delete shape;
+        delete _shape;
         return;
     }
     if (shapeType == (String) "Polygon" || shapeType == (String) "polygon") {
-        shape = new Polygon;
-        shape->create(std::cin);
-        this->add(shape);
+        _shape = new Polygon;
+        _shape->create(std::cin);
+        this->add(_shape);
         std::cout << "Added: ";
-        shape->print(std::cout);
+        _shape->print(std::cout);
         std::cout << "(" << this->size << ")";
-        delete shape;
+        delete _shape;
         return;
     }
 }

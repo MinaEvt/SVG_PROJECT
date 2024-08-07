@@ -7,10 +7,10 @@
 void Circle::print(std::ostream &out) {
     out << "The circle is: "
         << "x1 = " << this->cx
-        << "y1 = " << this->cy
-        << "x2 = " << this->r
-        << "line color = " << this->line
-        << "fill color = " << this->fill
+        << " y1 = " << this->cy
+        << " x2 = " << this->r
+        << " line color = " << this->line
+        << " fill color = " << this->fill
         << std::endl;
 }
 

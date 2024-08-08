@@ -1,6 +1,10 @@
 #include "Shapes/Container.h"
 #include "Helpers/String.h"
 
+bool isCorrectNumberOfShapes(String number){
+    //to do 
+}
+
 int main() {
 
     int number_of_shapes;

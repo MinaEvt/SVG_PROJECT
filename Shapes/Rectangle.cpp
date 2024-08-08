@@ -43,8 +43,10 @@ void Rectangle::create(std::istream &in) {
     std::cout << "Enter y: ";
     in >> this->y;
     std::cout << "Enter line: ";
+    std::cin >> std::ws;
     in >> this->line;
     std::cout << "Enter fill: ";
+    std::cin >> std::ws;
     in >> this->fill;
     if (!isCorrectShape()) {
         std::cout << "Error! Enter correct rectangle!" << std::endl;

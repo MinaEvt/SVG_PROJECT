@@ -33,7 +33,7 @@ void Container::resize() {
 
 Container::Container() : shape(nullptr), size(0), cap(0) {}
 
-Container::Container(int cap) : shape(new Shape *[this->cap]), size(0), cap(cap) {}
+Container::Container(int _cap) : cap(_cap), shape(new Shape *[_cap]), size(0) {}
 
 Container::Container(const Container &other) : shape(new Shape *[other.cap]), size(other.size), cap(other.cap) {
     for (int i = 0; i < this->size; ++i) {
@@ -83,7 +83,7 @@ void Container::print() const {
     for (int i = 0; i < this->size; ++i) {
         std::cout << "index " << i << ": " << this->shape[i] << std::endl;
         this->shape[i]->print(std::cout);//(1)The container:
-                                            //index 0: 0x55a1f6ab0730
+        //index 0: 0x55a1f6ab0730
     }
 }
 
@@ -98,50 +98,65 @@ void Container::write(std::ostream &out) const {
     out << "</svg>";
 }
 
+
+bool isCorrectShape(const String& isShape) {//da go napisha krasivo
+    bool isCorrect = false;
+    if (isShape == (String) "Rectangle" || isShape == (String) "rectangle" ||
+        isShape == (String) "Line" || isShape == (String) "line" ||
+        isShape == (String) "Circle" || isShape == (String) "circle" ||
+        isShape == (String) "Polygon" || isShape == (String) "polygon")
+        isCorrect = true;
+    return isCorrect;
+}
+
 void Container::createFromConsole() {
     //std::cout << "Enter shape: ";
     String shapeType;
     std::cin >> shapeType;
-    Shape *_shape;
-    if (shapeType == (String) "Rectangle" || shapeType == (String) "rectangle") {
-        _shape = new Rectangle;
-        _shape->create(std::cin);
-        this->add(_shape);
-        std::cout << "Added: ";
-        _shape->print(std::cout);
-        std::cout << "(" << this->size << ")";
-        delete _shape;
-        return;
-    }
-    if (shapeType == (String) "Line" || shapeType == (String) "line") {
-        _shape = new Line;
-        _shape->create(std::cin);
-        this->add(_shape);
-        std::cout << "Added: ";
-        _shape->print(std::cout);
-        std::cout << "(" << this->size << ")";
-        delete _shape;
-        return;
-    }
-    if (shapeType == (String) "Circle" || shapeType == (String) "circle") {
-        _shape = new Circle;
-        _shape->create(std::cin);
-        this->add(_shape);
-        std::cout << "Added: ";
-        _shape->print(std::cout);
-        std::cout << "(" << this->size << ")";
-        delete _shape;
-        return;
-    }
-    if (shapeType == (String) "Polygon" || shapeType == (String) "polygon") {
-        _shape = new Polygon;
-        _shape->create(std::cin);
-        this->add(_shape);
-        std::cout << "Added: ";
-        _shape->print(std::cout);
-        std::cout << "(" << this->size << ")";
-        delete _shape;
-        return;
+    if (isCorrectShape(shapeType)) {
+        Shape *_shape;
+        if (shapeType == (String) "Rectangle" || shapeType == (String) "rectangle") {
+            _shape = new Rectangle;
+            _shape->create(std::cin);
+            this->add(_shape);
+            std::cout << "Added: ";
+            _shape->print(std::cout);
+            std::cout << "(" << this->size << ")";
+            delete _shape;
+            return;
+        }
+        if (shapeType == (String) "Line" || shapeType == (String) "line") {
+            _shape = new Line;
+            _shape->create(std::cin);
+            this->add(_shape);
+            std::cout << "Added: ";
+            _shape->print(std::cout);
+            std::cout << "(" << this->size << ")";
+            delete _shape;
+            return;
+        }
+        if (shapeType == (String) "Circle" || shapeType == (String) "circle") {
+            _shape = new Circle;
+            _shape->create(std::cin);
+            this->add(_shape);
+            std::cout << "Added: ";
+            _shape->print(std::cout);
+            std::cout << "(" << this->size << ")";
+            delete _shape;
+            return;
+        }
+        if (shapeType == (String) "Polygon" || shapeType == (String) "polygon") {
+            _shape = new Polygon;
+            _shape->create(std::cin);
+            this->add(_shape);
+            std::cout << "Added: ";
+            _shape->print(std::cout);
+            std::cout << "(" << this->size << ")";
+            delete _shape;
+            return;
+        }
+    } else {
+        throw std::invalid_argument("This is not correct shape type!");
     }
 }
 

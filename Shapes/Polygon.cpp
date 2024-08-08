@@ -75,9 +75,11 @@ void Polygon::create(std::istream &in) {
         std::cout << "Enter y" << i+1 << ": ";
         in >> points[i].y;
     }
-    std::cout << "Enter line: ";
+    std::cout << "Enter linecolor: ";
+    std::cin >> std::ws;
     in >> this->line;
-    std::cout << "Enter fill: ";
+    std::cout << "Enter fillcolor: ";
+    std::cin >> std::ws;
     in >> this->fill;
     if (!isCorrectShape()) {
         std::cout << "Error! Enter correct line!" << std::endl;

@@ -50,9 +50,11 @@ void Circle::create(std::istream &in) {
     in >> this->cx;
     std::cout << "Enter cy: ";
     in >> this->cy;
-    std::cout << "Enter line: ";
+    std::cout << "Enter linecolor: ";
+    std::cin >> std::ws;
     in >> this->line;
-    std::cout << "Enter fill: ";
+    std::cout << "Enter fillcolor: ";
+    std::cin >> std::ws;
     in >> this->fill;
     if (!isCorrectShape()) {
         std::cout << "Error! Enter correct circle!" << std::endl;

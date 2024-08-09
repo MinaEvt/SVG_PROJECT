@@ -14,4 +14,6 @@ add_executable(SVG main.cpp
         Shapes/Polygon.cpp
         Shapes/Container.cpp
         Shapes/Shape.cpp
+        Files/File.cpp
+        Files/ShapeFile.cpp
 )

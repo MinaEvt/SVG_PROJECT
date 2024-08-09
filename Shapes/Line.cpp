@@ -10,7 +10,7 @@ void Line::print(std::ostream &out) {
         << " y1 = " << this->y1
         << " x2 = " << this->x2
         << " y2 = " << this->y2
-        << " linecolor = " << this->line << std::endl;
+        << " stroke = " << this->line << std::endl;
 }
 
 void Line::translate(const int vertical, const int horizontal) {
@@ -31,7 +31,7 @@ void Line::write(std::ostream &out) {
         << "y1=\"" << this->y1 << "\" "
         << "x2=\"" << this->x2 << "\" "
         << "y2=\"" << this->y2 << "\" "
-        << "line=\"" << this->line << "\" "
+        << "stroke=\"" << this->line << "\" "
         << "/>"
         << std::endl;
 }
@@ -52,7 +52,7 @@ void Line::create(std::istream &in) {
     in >> this->x2;
     std::cout << "Enter y2: ";
     in >> this->y2;
-    std::cout << "Enter linecolor: ";
+    std::cout << "Enter stroke: ";
     //std::getline(in, this->line);
     std::cin >> std::ws;
     in >> this->line;//jumps over

@@ -1,11 +1,15 @@
 #include "Shapes/Container.h"
 #include "Helpers/String.h"
+#include "Files/ShapeFile.h"
 
-bool isCorrectNumberOfShapes(String number){
-    //to do 
-}
+//bool isCorrectNumberOfShapes(String number){
+//    //to do
+//}
 
 int main() {
+    String filename("figures.svg");
+    ShapeFile file(filename.getText());
+//    if(file.exists(filename.getText()))
 
     int number_of_shapes;
     std::cout << "Enter number of shapes: " << std::endl;
@@ -19,7 +23,7 @@ int main() {
         std::cout << "Enter shape: ";
         number_of_shapes--;
     }
-    //c.print();
+    c.print();
 
     return 0;
 }

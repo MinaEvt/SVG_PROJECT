@@ -15,7 +15,7 @@ void Container::clean() {
 }
 
 void Container::resize() {
-    int newCap;
+    int newCap = 0;
     if (this->cap == 0) {
         newCap = 1;
     } else {
@@ -99,7 +99,7 @@ void Container::write(std::ostream &out) const {
 }
 
 
-bool isCorrectShape(const String& isShape) {//da go napisha krasivo
+bool isCorrectShape(const String &isShape) {//da go napisha krasivo
     bool isCorrect = false;
     if (isShape == (String) "Rectangle" || isShape == (String) "rectangle" ||
         isShape == (String) "Line" || isShape == (String) "line" ||
@@ -116,42 +116,42 @@ void Container::createFromConsole() {
     if (isCorrectShape(shapeType)) {
         Shape *_shape;
         if (shapeType == (String) "Rectangle" || shapeType == (String) "rectangle") {
+            std::cout << "(" << this->size << ")";
             _shape = new Rectangle;
             _shape->create(std::cin);
             this->add(_shape);
             std::cout << "Added: ";
             _shape->print(std::cout);
-            std::cout << "(" << this->size << ")";
             delete _shape;
             return;
         }
         if (shapeType == (String) "Line" || shapeType == (String) "line") {
+            std::cout << "(" << this->size << ")";
             _shape = new Line;
             _shape->create(std::cin);
             this->add(_shape);
             std::cout << "Added: ";
             _shape->print(std::cout);
-            std::cout << "(" << this->size << ")";
             delete _shape;
             return;
         }
         if (shapeType == (String) "Circle" || shapeType == (String) "circle") {
+            std::cout << "(" << this->size << ")";
             _shape = new Circle;
             _shape->create(std::cin);
             this->add(_shape);
             std::cout << "Added: ";
             _shape->print(std::cout);
-            std::cout << "(" << this->size << ")";
             delete _shape;
             return;
         }
         if (shapeType == (String) "Polygon" || shapeType == (String) "polygon") {
+            std::cout << "(" << this->size << ")";
             _shape = new Polygon;
             _shape->create(std::cin);
             this->add(_shape);
             std::cout << "Added: ";
             _shape->print(std::cout);
-            std::cout << "(" << this->size << ")";
             delete _shape;
             return;
         }
